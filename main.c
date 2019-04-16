@@ -1,9 +1,10 @@
 #include <stdio.h>
 
 char encryptRotation(char *message, int index, const int key);
-
+char decryptRotation(char *message, int index, const int key);
 int main()
 {
+    //need to sort out menu !
     int index = 0; 
     const int key = 12; //key is the amount of rotation - Caesar Cipher
     char message[] = "ALLIE IS COOL";
@@ -14,6 +15,8 @@ int main()
     encryptRotation(message, index, key);
     printf("encrypted message using rotation is: %s\n", message);
     
+    decryptRotation(message, index, key);
+    printf("decrypted message using rotation is: %s\n", message);
     
     return 0; 
 }
@@ -36,6 +39,23 @@ char encryptRotation(char *message, int index, const int key)
     }
     return message[index];
   } 
+  
+  char decryptRotation(char *message, int index, const int key)
+  {
+      for(index = 0; message[index] != 0; index ++)
+      {
+          if (message[index] > 64 && message[index] < 91)
+          {
+              message[index] = ((message[index] - 65) - key) %26 + 65;
+          }
+          else 
+          {
+              
+          }
+      }
+      return message[index];  
+  }
+  
 
 
     
