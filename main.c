@@ -8,11 +8,11 @@ int main()
 {
     //MENU TO SELECT 
     printf("Please select an option: \n");
-    printf("1. encryption of code using rotation cipher");
-    printf("2. decryption of code using rotation cipher");
-    printf("3. encryption of code using substitution cipher");
-    printf("4. decryption of code using substitution cipher");
-    printf("Selection: ");
+    printf("1. encryption of code using rotation cipher \n");
+    printf("2. decryption of code using rotation cipher \n");
+    printf("3. encryption of code using substitution cipher \n");
+    printf("4. decryption of code using substitution cipher \n");
+    printf("Selection: \n");
     
     char choice; 
     scanf("%c", &choice); //WORK OUT HOW TO USE SCANF IN CHE
@@ -23,12 +23,12 @@ int main()
             {
                 int index = 0;
                 const int encryptRotKey = 12;
-                char encryptRotMessage[] = "ALLIE IS COOL";
+                char message[] = "ALLIE IS COOL";
                 printf("key = %d\n", encryptRotKey);
                 printf("message to encrypt is: %s\n", message);
                 
-                encryptRotation(message, index, key);
-                printf("encrypted message using rotation is: %s\n", encryptRotMessage);
+                encryptRotation(message, index, encryptRotKey);
+                printf("encrypted message using rotation is: %s\n", message);
                 
                 break;
             }
@@ -40,7 +40,7 @@ int main()
                 printf("key = %d\n", decryptRotKey);
                 printf("message to decrypt is: %s\n", message);
                 
-                decryptRotation(message, index, key);
+                decryptRotation(message, index, decryptRotKey);
                 printf("decrypted message using rotation is: %s\n", message);
                 
                 break;
@@ -216,7 +216,7 @@ char encryptRotation(char *message, int index, const int encryptRotKey)
             case 'A':
                 message[index] = key[0];
                 break;
-            case 'B'
+            case 'B':
                 message[index] = key[1];
                 break;
             case 'C':
@@ -231,7 +231,68 @@ char encryptRotation(char *message, int index, const int encryptRotKey)
             case 'F':
                 message[index] = key[5];
                 break;
-            case 'G'
+            case 'G':
+                message[index] = key[6];
+                break;
+            case 'H':
+                message[index] = key[7];
+                break;
+            case 'I':
+                message[index] = key[8];
+                break;
+            case 'J':
+                message[index] = key[9];
+                break;
+            case 'K': 
+                message[index] = key[10];
+                break;
+            case 'L':
+                message[index] = key[11];
+                break;
+            case 'M':
+                message[index] = key[12];
+                break;
+            case 'N':
+                message[index] = key[13];
+                break;
+            case 'O':
+                message[index] = key[14];
+                break;
+            case 'P':
+                message[index] = key[15];
+                break;
+            case 'Q':
+                message[index] = key[16];
+                break;
+            case 'R':
+                message[index] = key[17];
+                break;
+            case 'S':
+                message[index] = key[18];
+                break;
+            case 'T':
+                message[index] = key[19];
+                break;
+            case 'U':
+                message[index] = key[20];
+                break;
+            case 'V':
+                message[index] = key[21];
+                break;
+            case 'W':
+                message[index] = key[22];
+                break;
+            case 'X':
+                message[index] = key[23];
+                break;
+            case 'Y':
+                message[index] = key[24];
+                break;
+            case 'Z':
+                message[index] = key[25];
+                break;
+            default:
+                break;
           }
       }
       return message[index];
