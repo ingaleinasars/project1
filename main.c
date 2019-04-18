@@ -162,6 +162,46 @@ char encryptRotation(char *message, int index, const int encryptRotKey)
             case 'M':
                 message[index] = key[12];
                 break;
+            case 'N':
+                message[index] = key[13];
+                break;
+            case 'O':
+                message[index] = key[14];
+                break;
+            case 'P':
+                message[index] = key[15];
+                break;
+            case 'Q':
+                message[index] = key[16];
+                break;
+            case 'R':
+                message[index] = key[17];
+                break;
+            case 'S':
+                message[index] = key[18];
+                break;
+            case 'T':
+                message[index] = key[19];
+                break;
+            case 'U':
+                message[index] = key[20];
+                break;
+            case 'V':
+                message[index] = key[21];
+                break;
+            case 'W':
+                message[index] = key[22];
+                break;
+            case 'X':
+                message[index] = key[23];
+                break;
+            case 'Y':
+                message[index] = key[24];
+                break;
+            case 'Z':
+                message[index] = key[25];
+            default:
+                break;
           }
       }
       return message[index];
@@ -169,6 +209,16 @@ char encryptRotation(char *message, int index, const int encryptRotKey)
   
   char decryptSubstitution(char *message, int index, char *key)
   {
+      for(index = 0; message[index] != 0; index ++)
+      {
+          switch(message[index])
+          {
+            case 'A':
+                message[index] = key[0];
+                break;
+                
+          }
+      }
       return message[index];
   }
 
