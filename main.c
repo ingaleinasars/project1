@@ -22,8 +22,13 @@ int main()
         case '1': 
             {
                 int index = 0;
-                const int encryptRotKey = 12;
-                char message[] = "ALLIE IS COOL";
+                int encryptRotKey;
+                char message[500];
+                
+                printf("create a key between 1 and 26: \n");
+                scanf("%d\n", &encryptRotKey);
+                printf("create a message to encrypt via rotation using key %d", encryptRotKey);
+                scanf("%s\n", message);        
                 printf("key = %d\n", encryptRotKey);
                 printf("message to encrypt is: %s\n", message);
                 
