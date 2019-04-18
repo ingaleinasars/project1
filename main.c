@@ -216,7 +216,22 @@ char encryptRotation(char *message, int index, const int encryptRotKey)
             case 'A':
                 message[index] = key[0];
                 break;
-                
+            case 'B'
+                message[index] = key[1];
+                break;
+            case 'C':
+                message[index] = key[2];
+                break;
+            case 'D':
+                message[index] = key[3];
+                break;
+            case 'E':
+                message[index] = key[4];
+                break;
+            case 'F':
+                message[index] = key[5];
+                break;
+            case 'G'
           }
       }
       return message[index];
