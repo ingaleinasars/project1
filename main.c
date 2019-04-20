@@ -6,6 +6,9 @@ char encryptSubstitution(char *message, int index, char *key);
 char decryptSubstitution(char *message, int index, char *key);
 int main()
 {
+    char choice;
+    do
+    {
     //MENU TO SELECT 
     printf("Please select an option: \n");
     printf("'a' encryption of code using rotation cipher \n");
@@ -14,7 +17,7 @@ int main()
     printf("'d' decryption of code using substitution cipher \n");
     printf("Enter a b c OR d for selection: \n");
     
-    char choice;
+    
     scanf("%c", &choice); 
      
    
@@ -94,8 +97,9 @@ int main()
             }
 
     }
-    
-    return 0; 
+    }
+    while(choice < 97 || choice > 100);
+   
            
 }
 
