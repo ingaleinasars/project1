@@ -1,108 +1,124 @@
+/* THIS COMMENT NEEDS TO DESCRIBE THE HIGH-LEVEL OPERATION OF THE PROGRAM + 
+INCLUDE USER-INTERFACE NOTES IE HOW USER PICKS BETWEEN ACTIONS. 
+INCLUDE NEED TO USE TERMINAL. IE TYPE CD /PROJECTS/PROJECT1/ ENTER
+LS ENTER ./A.OUT ENTER THEN FOLLOW COMMANDS PRINTED TO TERMINAL */
+
 #include <stdio.h>
 
+/* EXPLAIN FUNCTIONS INDIVIDUALLY BUT BRIEFLY AS FULL DESCRIPTION 
+GIVEN LATER */
 char encryptRotation(char *message, int index, int encryptRotKey);
 char decryptRotation(char *message, int index, int decryptRotKey);
 char encryptSubstitution(char *message, int index, char *key);
 char decryptSubstitution(char *message, int index, char *key);
+
 int main()
 {
-    char choice;
-    do
+    /*char is short for character. It is the data type that holds
+    one character (letter, number etc) of data. Here the variable 
+    'choice' is initialised to be of data type 'char'*/
+    char choice; 
+    
+    /*the do while loop  executes the following code at least once 
+    with the condition being tested at the end. The loop only repeats
+    if the condition is TRUE, otherwise the loop quits executing.*/
+    do  
     {
+        
     //MENU TO SELECT 
-    printf("Please select an option: \n");
-    printf("'a' encryption of code using rotation cipher \n");
-    printf("'b' decryption of code using rotation cipher \n");
-    printf("'c' encryption of code using substitution cipher \n");
-    printf("'d' decryption of code using substitution cipher \n");
-    printf("Enter a b c OR d for selection: \n");
+        printf("Please select an option: \n");
+        printf("'a' encryption of code using rotation cipher \n");
+        printf("'b' decryption of code using rotation cipher \n");
+        printf("'c' encryption of code using substitution cipher \n");
+        printf("'d' decryption of code using substitution cipher \n");
+        printf("Enter a b c OR d for selection: \n");
     
-    
-    scanf("%c", &choice); 
+        
+        scanf("%c", &choice); 
      
-   
-    switch(choice)
-    {
-        case 'a': 
-            {
-                int index = 0;
-                int encryptRotKey;
-                char message[1000];
-                
-           
-                printf("create a message to encrypt: ");
-                scanf(" %[^\n]s", message);        // the name of an array is a pointer to the first element of an array therefore no &
-                printf("create a key between 1 and 26: ");
-                scanf("%d", &encryptRotKey); 
-                
-                
-                encryptRotation(message, index, encryptRotKey);
-                printf("encrypted message is: %s \n", message);
-                
-                break;
-            }
-        case 'b':
-            {
-                int index = 0;
-                int decryptRotKey;
-                char message[500];
-                
-                printf("create a key between 1 and 26: ");
-                scanf("%d", &decryptRotKey);
-                printf("create a message to decrypt: ");
-                scanf(" %[^\n]s", message);
-                
-                decryptRotation(message, index, decryptRotKey);
-                printf("decrypted message using rotation is: %s\n", message);
-                
-                break;
-            }
-        case 'c':
-            {
-                int index = 0;
-                char key[26];
-                char message[500];
-                
-                printf("Enter a key for substitution encryption: ");
-                scanf("%s", key);
-                printf("Enter a message to encrypt using substitution: "); //PLEASE GET MILK AT THE SHOPS
-                scanf(" %[^\n]s", message);
-                
-                encryptSubstitution(message, index, key);
-                printf("encrypted message is: %s\n", message);
-                
-                break;                
-            }
-        case 'd':
-            {
-                int index = 0;
-                char key[26]; //KXVMCNOPHQRSZYIJADLEGWBUFT for "QWERTY" key
-                char message[500]; //HSTQLT UTZ DOSA QZ ZIT LIGHL
-                
-                printf("Enter a key for substitution decryption: ");
-                scanf("%s", key);
-                printf("Enter a message to decrypt using substitution: ");
-                scanf(" %[^\n]s", message);
-                
-                              
-                decryptSubstitution(message, index, key);
-                printf("decrypted message is: %s\n", message);
-                
-                break;                
-            }
-        default:
-            {
-                printf("An error has occured, please enter a b c OR d \n");
-                break;
-            }
-
+       /* HOW DOES SWITCH CASE WORK ??*/
+        switch(choice)
+        {
+            case 'a': 
+                {
+                    int index = 0;
+                    int encryptRotKey;
+                    char message[1000];
+                    
+               
+                    printf("create a message to encrypt: ");
+                    scanf(" %[^\n]s", message);        // the name of an array is a pointer to the first element of an array therefore no &
+                    printf("create a key between 1 and 26: ");
+                    scanf("%d", &encryptRotKey); 
+                    
+                    
+                    encryptRotation(message, index, encryptRotKey);
+                    printf("encrypted message is: %s \n", message);
+                    
+                    break;
+                }
+            case 'b':
+                {
+                    int index = 0;
+                    int decryptRotKey;
+                    char message[500];
+                    
+                    printf("create a key between 1 and 26: ");
+                    scanf("%d", &decryptRotKey);
+                    printf("create a message to decrypt: ");
+                    scanf(" %[^\n]s", message);
+                    
+                    decryptRotation(message, index, decryptRotKey);
+                    printf("decrypted message using rotation is: %s\n", message);
+                    
+                    break;
+                }
+            case 'c':
+                {
+                    int index = 0;
+                    char key[26];
+                    char message[500];
+                    
+                    printf("Enter a key for substitution encryption: ");
+                    scanf("%s", key);
+                    printf("Enter a message to encrypt using substitution: "); //PLEASE GET MILK AT THE SHOPS
+                    scanf(" %[^\n]s", message);
+                    
+                    encryptSubstitution(message, index, key);
+                    printf("encrypted message is: %s\n", message);
+                    
+                    break;                
+                }
+            case 'd':
+                {
+                    int index = 0;
+                    char key[26]; //KXVMCNOPHQRSZYIJADLEGWBUFT for "QWERTY" key
+                    char message[500]; //HSTQLT UTZ DOSA QZ ZIT LIGHL
+                    
+                    printf("Enter a key for substitution decryption: ");
+                    scanf("%s", key);
+                    printf("Enter a message to decrypt using substitution: ");
+                    scanf(" %[^\n]s", message);
+                    
+                                  
+                    decryptSubstitution(message, index, key);
+                    printf("decrypted message is: %s\n", message);
+                    
+                    break;                
+                }
+            default:
+                {
+                    printf("An error has occured, please enter a b c OR d \n");
+                    break;
+                }
+    
+        }
     }
-    }
-    while(choice < 97 || choice > 100);
-   
+        while(choice < 97 || choice > 100);
+        return 0;
            
 }
-
+/* */
 char encryptRotation(char *message, int index, int encryptRotKey)
 {
     for(index = 0; message[index] !=0; index++)
