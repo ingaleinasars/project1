@@ -5,12 +5,16 @@ LS ENTER ./A.OUT ENTER THEN FOLLOW COMMANDS PRINTED TO TERMINAL */
 
 #include <stdio.h>
 
-/* EXPLAIN FUNCTIONS INDIVIDUALLY BUT BRIEFLY AS FULL DESCRIPTION 
-GIVEN LATER */
+/* Below are 5 functions prototypes that were made to executed the programs function to 
+decrypt and encrypt messages. The function syntax is:
+        [return data type] function_name(function arguments) 
+    Each function will be explained in further detail when it 
+    appears as a function definition later in the code. */
 char encryptRotation(char *message, int index, int encryptRotKey);
 char decryptRotation(char *message, int index, int decryptRotKey);
 char encryptSubstitution(char *message, int index, char *key);
 char decryptSubstitution(char *message, int index, char *key);
+char decryptRotNoKey(char *message, int index, int key);
 
 int main()
 {
@@ -25,18 +29,37 @@ int main()
     do  
     {
         
-    //MENU TO SELECT 
-        printf("Please select an option: \n");
+    /* The following 7 printf statements are used to create a menu that the 
+    user users to select what function they would like to be executed. The
+    user is instructed to type a b c d OR e into the terminal. From here, the
+    scanf function reads the users input and stores it in the 'choice' variable
+    as a char data type. This user input is then used in the switch case. */ 
+    
+        printf("Please select an option: \n");  // \n prints the text on a new line
         printf("'a' encryption of code using rotation cipher \n");
         printf("'b' decryption of code using rotation cipher \n");
         printf("'c' encryption of code using substitution cipher \n");
         printf("'d' decryption of code using substitution cipher \n");
-        printf("Enter a b c OR d for selection: \n");
+        printf("'e' decryption of code using rotation cipher, no key \n");
+        printf("Enter a b c d OR e for selection: \n");
     
         
         scanf("%c", &choice); 
      
-       /* HOW DOES SWITCH CASE WORK ??*/
+       /* the syntax for a switch case is as follows:
+            switch(expression)
+            {
+                case constant:
+                    break;
+                case constant:
+                    break;
+                default:
+                    break;
+            }
+        where 'expression' is anything that evaluates to a number. 
+        
+        HOW DOES SWITCH CASE WORK ??
+        */
         switch(choice)
         {
             case 'a': 
@@ -106,15 +129,26 @@ int main()
                     
                     break;                
                 }
+            case 'e':
+                {
+                    int index, key;
+                    char message[1000]; 
+                    
+                    printf("Enter a message to decrypt using rotation: ");
+                    scanf(" %[^\n]s", message);
+                    
+                    decryptRotNoKey(message, index, key);
+                    printf("decrypted message is: %s\n", message);
+                }
             default:
                 {
-                    printf("An error has occured, please enter a b c OR d \n");
+                    printf("An error has occured, please enter a b c d OR e \n");
                     break;
                 }
     
         }
     }
-        while(choice < 97 || choice > 100);
+        while(choice < 97 || choice > 101);
         return 0;
            
 }
@@ -334,4 +368,4 @@ char encryptRotation(char *message, int index, int encryptRotKey)
       }
       return message[index];
   }
-
+  
