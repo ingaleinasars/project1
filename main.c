@@ -5,7 +5,7 @@ LS ENTER ./A.OUT ENTER THEN FOLLOW COMMANDS PRINTED TO TERMINAL */
 
 #include <stdio.h>
 
-/* Below are 5 functions prototypes that were made to executed the programs function to 
+/* Below are 4 functions prototypes that were made to executed the programs function to 
 decrypt and encrypt messages. The function syntax is:
         [return data type] function_name(function arguments) 
     Each function will be explained in further detail when it 
@@ -14,7 +14,7 @@ char encryptRotation(char *message, int index, int encryptRotKey);
 char decryptRotation(char *message, int index, int decryptRotKey);
 char encryptSubstitution(char *message, int index, char *key);
 char decryptSubstitution(char *message, int index, char *key);
-char decryptRotNoKey(char *message, int index, int key);
+
 
 int main()
 {
@@ -40,8 +40,7 @@ int main()
         printf("'b' decryption of code using rotation cipher \n");
         printf("'c' encryption of code using substitution cipher \n");
         printf("'d' decryption of code using substitution cipher \n");
-        printf("'e' decryption of code using rotation cipher, no key \n");
-        printf("Enter a b c d OR e for selection: \n");
+        printf("Enter a b c OR d for selection: \n");
     
         
         scanf("%c", &choice); 
@@ -56,10 +55,13 @@ int main()
                 default:
                     break;
             }
-        where 'expression' is anything that evaluates to a number. 
-        
-        HOW DOES SWITCH CASE WORK ??
-        */
+        where 'expression' is anything that evaluates to a number. For this code, the
+        expression is the variable 'choice' which is the user's input. For the switch case
+        to execute, the user must enter either a, b, c, OR d (this input is known as a constant).
+        Once this input is read, only the specific case that corresponds to the user's input will
+        be executed. If the user enters a constant that is not a, b, c OR d, then the default case
+        will be executed and the menu will be printed again since the conditions of the while loop
+        will be satisfied. */
         switch(choice)
         {
             case 'a': 
@@ -129,17 +131,6 @@ int main()
                     
                     break;                
                 }
-            case 'e':
-                {
-                    int index, key;
-                    char message[1000]; 
-                    
-                    printf("Enter a message to decrypt using rotation: ");
-                    scanf(" %[^\n]s", message);
-                    
-                    decryptRotNoKey(message, index, key);
-                    printf("decrypted message is: %s\n", message);
-                }
             default:
                 {
                     printf("An error has occured, please enter a b c d OR e \n");
@@ -148,7 +139,7 @@ int main()
     
         }
     }
-        while(choice < 97 || choice > 101);
+        while(choice < 97 || choice > 100);
         return 0;
            
 }
