@@ -1,5 +1,5 @@
 /* THIS COMMENT NEEDS TO DESCRIBE THE HIGH-LEVEL OPERATION OF THE PROGRAM + 
-INCLUDE USER-INTERFACE NOTES IE HOW USER PICKS BETWEEN ACTIONS. 
+cINCLUDE USER-INTERFACE NOTES IE HOW USER PICKS BETWEEN ACTIONS. 
 INCLUDE NEED TO USE TERMINAL. IE TYPE CD /PROJECTS/PROJECT1/ ENTER
 LS ENTER ./A.OUT ENTER THEN FOLLOW COMMANDS PRINTED TO TERMINAL */
 
@@ -10,7 +10,7 @@ decrypt and encrypt messages. The function syntax is:
         [return data type] function_name(function arguments) 
     Each function will be explained in further detail when it 
     appears as a function definition later in the code. */
-char encryptRotation(char *message, int index, int encryptRotKey);
+char encrypt_rotation(char *message, int i, int encryptRotKey);
 char decryptRotation(char *message, int index, int decryptRotKey);
 char encryptSubstitution(char *message, int index, char *key);
 char decryptSubstitution(char *message, int index, char *key);
@@ -66,18 +66,31 @@ int main()
         {
             case 'a': 
                 {
-                    int index = 0;
+                    /*
+                     An array is...
+                     i represents an array index. This must be an integer. An array index 
+                     accesses a unique variable that is stored in the array. When i = 0, it 
+                     accesses the first element of the array. 
+                     INT DATA TYPE QUICK EXPLANATION 
+                     */
+                    int i; 
+                    /* */
                     int encryptRotKey;
-                    char message[1000];
+                    /* */
+                    char message[1000]; // array WHAT IS IT??
                     
-               
-                    printf("create a message to encrypt: ");
-                    scanf(" %[^\n]s", message);        // the name of an array is a pointer to the first element of an array therefore no &
+                    
+                    /* */
                     printf("create a key between 1 and 26: ");
+                    /* */
                     scanf("%d", &encryptRotKey); 
+                    /* */
+                    printf("create a message to encrypt: ");
+                    /* */
+                    scanf(" %[^\n]s", message);        // the name of an array is a pointer to the first element of an array therefore no &
+                   
                     
-                    
-                    encryptRotation(message, index, encryptRotKey);
+                    encrypt_rotation(message, index, encryptRotKey); // DIRECT READER HERE AFTER READING COMMENT BEFORE FUNC DEF
                     printf("encrypted message is: %s \n", message);
                     
                     break;
@@ -133,7 +146,7 @@ int main()
                 }
             default:
                 {
-                    printf("An error has occured, please enter a b c d OR e \n");
+                    printf("An error has occured, please enter a b c OR d \n");
                     break;
                 }
     
@@ -143,14 +156,26 @@ int main()
         return 0;
            
 }
-/* */
-char encryptRotation(char *message, int index, int encryptRotKey)
+/* This is the function defintion for the function (when called using the switch
+case) that will take the user's message and selected key (a number between 0 and 26) to 
+encrypt the message using the rotation cipher. The "key" is the number of letters by which 
+the alphabet is shifted when calculating what letter will be changed to what letter. 
+
+The return data type for this function is char and its name is 'encrypt_rotation'. 
+The first argument for this function is 'message' and it has the data type char. However,
+since 'message' is an array, it is not efficient to pass a whole array in a function and therefore, 
+a pointer is used. A pointer is the memory address of the array's first element and has the syntax '*'. 
+The remaining arguments of this function are not arrays and therefore do not require pointers in 
+order to pass variables the function.  */
+char encrypt_rotation(char *message, int i, int encryptRotKey)
 {
-    for(index = 0; message[index] !=0; index++)
+    /* FUNCTION IMPLEMENTED USING FOR AND IF LOOP. EXPLAIN DETAILS AND SPECIFICS ESPECIALLY
+    ENCRYPT ROT ASSIGNMENT*/
+    for(i = 0; message[i] !=0; i ++)
        {
-           if (message[index] > 64 && message[index] < 91)
+           if (message[i] > 64 && message[i] < 91)
            {
-               message[index] = ((message[index] - 65) + encryptRotKey) %26 + 65;
+               message[i] = ((message[i] - 65) + encryptRotKey) %26 + 65;
            }
            
            else 
@@ -160,9 +185,10 @@ char encryptRotation(char *message, int index, int encryptRotKey)
     
          
     }
-    return message[index];
+    return message[i]; // EXPLAIN WHAT THIS DOES
   } 
   
+  //REPEAT FIRST FUNCTION EXPLAINATION
   char decryptRotation(char *message, int index, int decryptRotKey)
   {
       for(index = 0; message[index] != 0; index ++)
