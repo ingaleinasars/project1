@@ -11,9 +11,9 @@ decrypt and encrypt messages. The function syntax is:
     Each function will be explained in further detail when it 
     appears as a function definition later in the code. */
 char encrypt_rotation(char *message, int i, int encryptRotKey);
-char decryptRotation(char *message, int index, int decryptRotKey);
-char encryptSubstitution(char *message, int index, char *key);
-char decryptSubstitution(char *message, int index, char *key);
+char decryptRotation(char *cipher_text, int i, int decryptRotKey);
+char encryptSubstitution(char *message, int i, char *encryptSubKey);
+char decryptSubstitution(char *cipher_text, int i, char *decryptSubKey);
 
 
 int main()
@@ -90,58 +90,57 @@ int main()
                     scanf(" %[^\n]s", message);        // the name of an array is a pointer to the first element of an array therefore no &
                    
                     
-                    encrypt_rotation(message, index, encryptRotKey); // DIRECT READER HERE AFTER READING COMMENT BEFORE FUNC DEF
+                    encrypt_rotation(message, i, encryptRotKey); // DIRECT READER HERE AFTER READING COMMENT BEFORE FUNC DEF
                     printf("encrypted message is: %s \n", message);
                     
                     break;
                 }
             case 'b':
                 {
-                    int index = 0;
+                    int i = 0;
                     int decryptRotKey;
-                    char message[500];
+                    char cipher_text[500];
                     
                     printf("create a key between 1 and 26: ");
                     scanf("%d", &decryptRotKey);
-                    printf("create a message to decrypt: ");
-                    scanf(" %[^\n]s", message);
+                    printf("Enter text to decrypt: ");
+                    scanf(" %[^\n]s", cipher_text);
                     
-                    decryptRotation(message, index, decryptRotKey);
-                    printf("decrypted message using rotation is: %s\n", message);
+                    decryptRotation(cipher_text, i, decryptRotKey);
+                    printf("decrypted message using rotation is: %s\n", cipher_text);
                     
                     break;
                 }
             case 'c':
                 {
-                    int index = 0;
-                    char key[26];
+                    int i = 0;
+                    char encryptSubKey[26];
                     char message[500];
                     
                     printf("Enter a key for substitution encryption: ");
-                    scanf("%s", key);
+                    scanf("%s", encryptSubKey);
                     printf("Enter a message to encrypt using substitution: "); //PLEASE GET MILK AT THE SHOPS
                     scanf(" %[^\n]s", message);
                     
-                    encryptSubstitution(message, index, key);
+                    encryptSubstitution(message, i, encryptSubKey);
                     printf("encrypted message is: %s\n", message);
                     
                     break;                
                 }
             case 'd':
                 {
-                    int index = 0;
-                    char key[26]; //KXVMCNOPHQRSZYIJADLEGWBUFT for "QWERTY" key
-                    char message[500]; //HSTQLT UTZ DOSA QZ ZIT LIGHL
+                    int i = 0;
+                    char decryptSubKey[26]; //KXVMCNOPHQRSZYIJADLEGWBUFT for "QWERTY" key
+                    char cipher_text[500]; //HSTQLT UTZ DOSA QZ ZIT LIGHL
                     
-                    printf("Enter a key for substitution decryption: ");
-                    scanf("%s", key);
-                    printf("Enter a message to decrypt using substitution: ");
-                    scanf(" %[^\n]s", message);
-                    
-                                  
-                    decryptSubstitution(message, index, key);
-                    printf("decrypted message is: %s\n", message);
-                    
+                    printf("Enter the key for substitution decryption: ");
+                    scanf("%s", decryptSubKey);
+                    printf("Enter text to decrypt using substitution: ");
+                    scanf(" %[^\n]s", cipher_text);
+                            
+                    decryptSubstitution(cipher_text, i, decryptSubKey);
+                    printf("decrypted message is: %s\n", cipher_text);
+                                                                        
                     break;                
                 }
             default:
@@ -189,200 +188,200 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
   } 
   
   //REPEAT FIRST FUNCTION EXPLAINATION
-  char decryptRotation(char *message, int index, int decryptRotKey)
+  char decryptRotation(char *cipher_text, int i, int decryptRotKey)
   {
-      for(index = 0; message[index] != 0; index ++)
+      for(i = 0; cipher_text[i] != 0; i ++)
       {
-          if (message[index] > 64 && message[index] < 91)
+          if (cipher_text[i] > 64 && cipher_text[i] < 91)
           {
-              message[index] = ((message[index] - 65) - decryptRotKey + 26) %26 + 65;
+              cipher_text[i] = ((cipher_text[i] - 65) - decryptRotKey + 26) %26 + 65;
           }
           else 
           {
               
           }
       }
-      return message[index];  
+      return cipher_text[i];  
   }
 
-  char encryptSubstitution(char *message, int index, char *key)
+  char encryptSubstitution(char *message, int i, char *encryptSubKey)
   {
-      for (index = 0; message[index] != 0; index ++)
+      for (i = 0; message[i] != 0; i ++)
       {
-          switch(message[index])
+          switch(message[i])
           {
             case 'A':
-                message[index] = key[0];
+                message[i] = encryptSubKey[0];
                 break;
             case 'B':
-                message[index] = key[1];
+                message[i] = encryptSubKey[1];
                 break;
             case 'C':
-                message[index] = key[2];
+                message[i] = encryptSubKey[2];
                 break;
             case 'D':
-                message[index] = key[3];
+                message[i] = encryptSubKey[3];
                 break;
             case 'E':
-                message[index] = key[4];
+                message[i] = encryptSubKey[4];
                 break;
             case 'F':
-                message[index] = key[5];
+                message[i] = encryptSubKey[5];
                 break;
             case 'G':
-                message[index] = key[6];
+                message[i] = encryptSubKey[6];
                 break;
             case 'H':
-                message[index] = key[7];
+                message[i] = encryptSubKey[7];
                 break;
             case 'I':
-                message[index] = key[8];
+                message[i] = encryptSubKey[8];
                 break;
             case 'J':
-                message[index] = key[9];
+                message[i] = encryptSubKey[9];
                 break;
             case 'K':
-                message[index] = key[10];
+                message[i] = encryptSubKey[10];
                 break;
             case 'L':
-                message[index] = key[11];
+                message[i] = encryptSubKey[11];
                 break;
             case 'M':
-                message[index] = key[12];
+                message[i] = encryptSubKey[12];
                 break;
             case 'N':
-                message[index] = key[13];
+                message[i] = encryptSubKey[13];
                 break;
             case 'O':
-                message[index] = key[14];
+                message[i] = encryptSubKey[14];
                 break;
             case 'P':
-                message[index] = key[15];
+                message[i] = encryptSubKey[15];
                 break;
             case 'Q':
-                message[index] = key[16];
+                message[i] = encryptSubKey[16];
                 break;
             case 'R':
-                message[index] = key[17];
+                message[i] = encryptSubKey[17];
                 break;
             case 'S':
-                message[index] = key[18];
+                message[i] = encryptSubKey[18];
                 break;
             case 'T':
-                message[index] = key[19];
+                message[i] = encryptSubKey[19];
                 break;
             case 'U':
-                message[index] = key[20];
+                message[i] = encryptSubKey[20];
                 break;
             case 'V':
-                message[index] = key[21];
+                message[i] = encryptSubKey[21];
                 break;
             case 'W':
-                message[index] = key[22];
+                message[i] = encryptSubKey[22];
                 break;
             case 'X':
-                message[index] = key[23];
+                message[i] = encryptSubKey[23];
                 break;
             case 'Y':
-                message[index] = key[24];
+                message[i] = encryptSubKey[24];
                 break;
             case 'Z':
-                message[index] = key[25];
+                message[i] = encryptSubKey[25];
             default:
                 break;
           }
       }
-      return message[index];
+      return message[i];
   }
   
-  char decryptSubstitution(char *message, int index, char *key)
+  char decryptSubstitution(char *cipher_text, int i, char *decryptSubKey)
   {
-      for(index = 0; message[index] != 0; index ++)
+      for(i = 0; cipher_text[i] != 0; i ++)
       {
-          switch(message[index])
+          switch(cipher_text[i])
           {
             case 'A':
-                message[index] = key[0];
+                cipher_text[i] = decryptSubKey[0];
                 break;
             case 'B':
-                message[index] = key[1];
+                cipher_text[i] = decryptSubKey[1];
                 break;
             case 'C':
-                message[index] = key[2];
+                cipher_text[i] = decryptSubKey[2];
                 break;
             case 'D':
-                message[index] = key[3];
+                cipher_text[i] = decryptSubKey[3];
                 break;
             case 'E':
-                message[index] = key[4];
+                cipher_text[i] = decryptSubKey[4];
                 break;
             case 'F':
-                message[index] = key[5];
+                cipher_text[i] = decryptSubKey[5];
                 break;
             case 'G':
-                message[index] = key[6];
+                cipher_text[i] = decryptSubKey[6];
                 break;
             case 'H':
-                message[index] = key[7];
+                cipher_text[i] = decryptSubKey[7];
                 break;
             case 'I':
-                message[index] = key[8];
+                cipher_text[i] = decryptSubKey[8];
                 break;
             case 'J':
-                message[index] = key[9];
+                cipher_text[i] = decryptSubKey[9];
                 break;
             case 'K': 
-                message[index] = key[10];
+                cipher_text[i] = decryptSubKey[10];
                 break;
             case 'L':
-                message[index] = key[11];
+                cipher_text[i] = decryptSubKey[11];
                 break;
             case 'M':
-                message[index] = key[12];
+                cipher_text[i] = decryptSubKey[12];
                 break;
             case 'N':
-                message[index] = key[13];
+                cipher_text[i] = decryptSubKey[13];
                 break;
             case 'O':
-                message[index] = key[14];
+                cipher_text[i] = decryptSubKey[14];
                 break;
             case 'P':
-                message[index] = key[15];
+                cipher_text[i] = decryptSubKey[15];
                 break;
             case 'Q':
-                message[index] = key[16];
+                cipher_text[i] = decryptSubKey[16];
                 break;
             case 'R':
-                message[index] = key[17];
+                cipher_text[i] = decryptSubKey[17];
                 break;
             case 'S':
-                message[index] = key[18];
+                cipher_text[i] = decryptSubKey[18];
                 break;
             case 'T':
-                message[index] = key[19];
+                cipher_text[i] = decryptSubKey[19];
                 break;
             case 'U':
-                message[index] = key[20];
+                cipher_text[i] = decryptSubKey[20];
                 break;
             case 'V':
-                message[index] = key[21];
+                cipher_text[i] = decryptSubKey[21];
                 break;
             case 'W':
-                message[index] = key[22];
+                cipher_text[i] = decryptSubKey[22];
                 break;
             case 'X':
-                message[index] = key[23];
+                cipher_text[i] = decryptSubKey[23];
                 break;
             case 'Y':
-                message[index] = key[24];
+                cipher_text[i] = decryptSubKey[24];
                 break;
             case 'Z':
-                message[index] = key[25];
+                cipher_text[i] = decryptSubKey[25];
                 break;
             default:
                 break;
           }
       }
-      return message[index];
+      return cipher_text[i];
   }
   
