@@ -1,4 +1,4 @@
-/* THIS COMMENT NEEDS TO DESCRIBE THE HIGH-LEVEL OPERATION OF THE PROGRAM + 
+/*THIS COMMENT NEEDS TO DESCRIBE THE HIGH-LEVEL OPERATION OF THE PROGRAM + 
 cINCLUDE USER-INTERFACE NOTES IE HOW USER PICKS BETWEEN ACTIONS. 
 INCLUDE NEED TO USE TERMINAL. IE TYPE CD /PROJECTS/PROJECT1/ ENTER
 LS ENTER ./A.OUT ENTER THEN FOLLOW COMMANDS PRINTED TO TERMINAL */
@@ -67,26 +67,33 @@ int main()
             case 'a': 
                 {
                     /*
-                     An array is...
+                     An array is a collection of variables of the same data type. It has the 
+                     following syntax:
+                        data_type name[N], where N is the array length
                      i represents an array index. This must be an integer. An array index 
                      accesses a unique variable that is stored in the array. When i = 0, it 
                      accesses the first element of the array. 
-                     INT DATA TYPE QUICK EXPLANATION 
-                     */
+                     
+                     'int' is the data type that stores integers. */
                     int i; 
-                    /* */
+                    /*The variable below represents the key that the user selects that will
+                    be used to shift the letters in the alphabet to use for encryption of a message.*/
                     int encryptRotKey;
-                    /* */
-                    char message[1000]; // array WHAT IS IT??
+                    /*The variable below is an array. It represents the message the user will create to
+                    be encrypted via rotation. The array has a length of 1000 meaning it can store up to
+                    1000 characters that the user inputs.*/
+                    char message[1000]; 
                     
                     
-                    /* */
+                    /*The following text in green will be printed to the terminal */
                     printf("create a key between 1 and 26: ");
-                    /* */
+                    /*Using the following scanf function, the number for the key that the user inputs into 
+                    the terminal will be stored as a integer in the variable 'encryptRotKey'. The & symbol
+                    returns the address of the variable */
                     scanf("%d", &encryptRotKey); 
-                    /* */
+                    /*The following text in green will be printed to the terminal*/
                     printf("create a message to encrypt: ");
-                    /* */
+                    /*The following scanf function */
                     scanf(" %[^\n]s", message);        // the name of an array is a pointer to the first element of an array therefore no &
                    
                     
