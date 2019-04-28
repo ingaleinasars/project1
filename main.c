@@ -211,13 +211,17 @@ int main()
                     printf("Enter text to decrypt using substitution: ");
                     scanf(" %[^\n]s", cipher_text); //same principles as case 'b'
                             
-                    /*Go to row */
+                    /*Go to row AHAHAHAHAHA before reading the rest of the code in this case as it is executed 
+                    AFTER the block of code following the decryptSubstitution function definition */
                     
+                    /*The following two lines of code are executed in the same way as seen in case 'b' */
                     decryptSubstitution(cipher_text, i, decryptSubKey);
                     printf("decrypted message is: %s\n", cipher_text);
                                                                         
                     break;                
                 }
+            /*If the user types in something other than either a, b, c OR d into the terminal, the following block
+            of code will be executed under the default statement and the menu will be reprinted to the terminal */
             default:
                 {
                     printf("An error has occured, please enter a b c OR d \n");
@@ -227,14 +231,14 @@ int main()
         }
     }
         while(choice < 97 || choice > 100);
-        return 0;
+        return 0; 
            
 }
 /* This is the function defintion for the function (when called using the switch
 case) that will take the user's message and selected key (a number between 0 and 26) to 
 encrypt the message using the rotation cipher. The "key" is the number of letters by which 
 the alphabet is shifted when calculating what letter will be changed to what letter. 
-ie if the key = 2, then A becomes C, B becomes E etc.
+ie if the key = 2, then A becomes C, B becomes D etc.
 
 The return data type for this function is char and its name is 'encrypt_rotation'. 
 The first argument for this function is 'message' and it has the data type char. However,
@@ -285,24 +289,65 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
          
     }
     /*The following statement takes each variable of the array 'message' that was assigned a new ASCII character
-    and returns it the main() function. Go to row 29.*/
+    and returns it the main() function. Go to row 132.*/
     return message[i]; 
   } 
   
-  //REPEAT FIRST FUNCTION EXPLAINATION
+ 
+ 
+  /* The following is the function defintion for the function (when called using the switch
+    case) that will take the user's previously encrypted message and selected key (a number between 0 and 26) to 
+    decrypt the message using the rotation cipher. The "key" is the number of letters by which 
+    the alphabet is shifted (in the opposite direction to encryption) when calculating what letter 
+    will be changed to what letter. ie if the key = 2, then C becomes A, D becomes B etc.
+    
+    The return data type for this function is char and its name is 'decrypt_rotation'. 
+    The first argument for this function is 'message' and it has the data type char. However,
+    since 'message' is an array, it is not efficient to pass a whole array in a function and therefore, 
+    a pointer is used. A pointer is the memory address of the array's first element and has the syntax '*'. 
+    The remaining arguments of this function are not arrays and therefore do not require pointers in 
+    order to pass variables the function. These two arguments are explained under case 'a' of the above
+    switch case. */
+  
   char decrypt_rotation(char *cipher_text, int i, int decryptRotKey)
   {
+      /*The above function is implemented using a for loop and if loop inside the for loop.
+      The function's arguments are passed from the main() function and are used below.
+    
+      The for loop used, initialises the array index to start at 0. It then states that
+      that the array named 'message' cannot have a character that is equal to zero. This is 
+      the loop's condition. (the ASCII character who has the corresponding number of 0, is NULL).
+      It then specifies that each time the for loop is executed, the index is incremented by 1
+      ie the first time the loop is executed, i=1, the second time, i=2 etc, until there index 
+      reaches the end of the array. At this point the for loop will exit as message[i] = 0.
+    
+      The if loop is used to execute the rotation encryption tasks of this specific function. 
+      The only characters that will be encrypted via rotation will be capital letters. Lower case
+      letters, symbols and spaces will simply be reprinted to the terminal by the else statement of 
+      the if loop. */
       for(i = 0; cipher_text[i] != 0; i ++)
       {
           if (cipher_text[i] > 64 && cipher_text[i] < 91)
           {
-              cipher_text[i] = ((cipher_text[i] - 65) - decryptRotKey + 26) %26 + 65;
+           /*The conditions for this if statement to be executed is that the specific variable of the
+           array named 'message' must have a corresponding ASCII number that is greater than 64 but also 
+           less than 91. Therefore only encrypting capital letters.
+           
+           The following equation takes the given variable of the array and assigns it a new ASCII character.
+           Specifically, it does this by first sets the letter to an ASCII character between 0 and 25 by minusing
+           65. The chosen key for rotation is added. Then the modulus of 26 is taken to prevent characters being 
+           encrypted into ASCII characters that are not capital letters. To then re-assign the character to an ASCII 
+           capital letter, 65 is added. 
+           */
+                cipher_text[i] = ((cipher_text[i] - 65) - decryptRotKey + 26) %26 + 65;
           }
           else 
           {
               
           }
       }
+      /*The following statement takes each variable of the array 'message' that was assigned a new ASCII character
+        and returns it the main() function. Go to row 29.*/
       return cipher_text[i];  
   }
 
