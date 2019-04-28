@@ -126,8 +126,8 @@ int main()
                     is a pointer to the first element of the array*/
                     scanf(" %[^\n]s", message);        
                     
-                    /* Go to row 200 before reading the rest of this case as the following is executed AFTER the function
-                    definition starting at row 200. */
+                    /* Go to row 237 before reading the rest of this case as the following is executed AFTER the function
+                    definition starting at row 237. */
                     
                     /*The two lines of code following this comment are executed as follows: 
                         - The encrypted message that was created using the encrypt_rotation function is passed back here 
@@ -160,7 +160,7 @@ int main()
                     for case 'a'. However, it is stored as the array 'cipher_text', not the array called 'message' */
                     scanf(" %[^\n]s", cipher_text);
                     
-                    /* Go to row AHAHAHAHAHHAHA before reading the rest of the code in case 'b' as the block of code that starts there
+                    /* Go to row 298 before reading the rest of the code in case 'b' as the block of code that starts there
                     under the decryptRotation function definition is executed FIRST. */
                     
                     /*The following two lines of code are executed as follows:
@@ -188,12 +188,13 @@ int main()
                     printf("Enter a message to encrypt using substitution: "); //PLEASE GET MILK AT THE SHOPS
                     scanf(" %[^\n]s", message); // same as case 'a'
                     
-                    /*Go to row AHAHAHAHAHA before reading the rest of the code in this case as it is executed AFTER the block of code
+                    /*Go to row 355 before reading the rest of the code in this case as it is executed AFTER the block of code
                     following the encryptSubstitution function definition*/
                     
                     /*The following two lines of code are executed in the same way as seen in case 'a' */
                     encryptSubstitution(message, i, encryptSubKey);
                     printf("encrypted message is: %s\n", message);
+                    
                     
                     break;                
                 }
@@ -211,7 +212,7 @@ int main()
                     printf("Enter text to decrypt using substitution: ");
                     scanf(" %[^\n]s", cipher_text); //same principles as case 'b'
                             
-                    /*Go to row AHAHAHAHAHA before reading the rest of the code in this case as it is executed 
+                    /*Go to row 481 before reading the rest of the code in this case as it is executed 
                     AFTER the block of code following the decryptSubstitution function definition */
                     
                     /*The following two lines of code are executed in the same way as seen in case 'b' */
@@ -319,7 +320,7 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
       the loop's condition. (the ASCII character who has the corresponding number of 0, is NULL).
       It then specifies that each time the for loop is executed, the index is incremented by 1
       ie the first time the loop is executed, i=1, the second time, i=2 etc, until there index 
-      reaches the end of the array. At this point the for loop will exit as message[i] = 0.
+      reaches the end of the array. At this point the for loop will exit as cipher_text[i] = 0.
     
       The if loop is used to execute the rotation decryption tasks of this specific function. 
       The only characters that will be decrypted via rotation will be capital letters. Lower case
@@ -347,7 +348,7 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
           }
       }
       /*The following statement takes each variable of the array 'cipher_text' that was assigned a new ASCII character
-        and returns it the main() function. Go to row AHAHAHAH.*/
+        and returns it the main() function. Go to row 166.*/
       return cipher_text[i];  
   }
 
@@ -355,7 +356,8 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
   /*This is the function defintion for the function (when called using the switch case menu) that will take the user's 
   message and selected key (an array of the 26 letters of the alphabet) to encrypt the message using the substitution 
   cipher. They key, named 'encryptSubKey' is a string of the alphabet that has purposely been written out of order. For
-  example, if the key used was 'QWERTYUIOPASDFGHJKLZXCVBNM' then using this function A will become Q, B will become W etc.
+  example, if the key used was 'QWERTYUIOPASDFGHJKLZXCVBNM' then using this in the function A will become Q, B will 
+  become W etc.
   
   The return data type for this function is char as it is returning a series of characters back to the main() function
   and this can only be performed using the char data type. Both the 1st and 3rd arguments for this function are arrays and 
@@ -380,7 +382,7 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
           /* The following switch case is used to encrypt the given message using the provided
           substition key. There are 26 different cases plus the default case if a character other
           than a capital letter is encounted. The expression for the following switch case is 
-          'message[i]' which will change each time the for loop is implemented since i increases by 1
+          'message[i]' whose constant will change each time the for loop is implemented since i increases by 1
           each time. Each time i is incremented, a new variable of the array is selected for encryption. 
           If the character selected using the array index is a capital letter, one of the cases will be 
           chosen. The case chosen corresponds to the ASCII character of the variable selected from the array. 
@@ -474,97 +476,136 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
                 break;
           }
       }
+      /*The following statement takes each variable of the array 'message' that was assigned a new ASCII character
+      and returns it the main() function. Go to row 194.*/
       return message[i];
   }
   
+  /*This is the function defintion for the function (when called using the switch case menu) that will take the user's 
+  encrypted message (initialised as cipher_text for this function) and selected key (an array of the 26 letters of the alphabet)
+  to decrypt a previously encrypted message using the substitution cipher. They key, named 'decryptSubKey' is a string of the alphabet 
+  that has purposely been written out of order. For example, if the key selected for decryption was 'KXVMCHNOPHQRSZYIJADLEGWBUFT' then 
+  using this in the function, A will be decrypted to K, B will be decrypted to X etc.
+  
+  The return data type for this function is char as it is returning a series of characters back to the main() function
+  and this can only be performed using the char data type. Both the 1st and 3rd arguments for this function are arrays and 
+  therefore requiring the use of pointers (whose syntax is '*') since it is not efficient to pass a whole array to a function. 
+  A pointer is the memory address of the array's first element. The 'int i' argument does not require a pointer to pass its 
+  information to the function as it is not a array and only holds one number at a time. The arguments are explained in more 
+  detail throughout the individual cases in the switch case. */
   char decryptSubstitution(char *cipher_text, int i, char *decryptSubKey)
   {
+      /*The above function is implemented using a for loop and switch case inside the for loop.
+      The function's arguments are passed from the main() function and are used below.
+    
+      The for loop used, initialises the array index to start at 0. It then states that
+      that the array named 'cipher_text' cannot have a character that is equal to zero. This is 
+      the loop's condition. (the ASCII character who has the corresponding number of 0, is NULL).
+      It then specifies that each time the for loop is executed, the index is incremented by 1
+      ie the first time the loop is executed, i=1, the second time, i=2 etc, until there index 
+      reaches the end of the array. At this point the for loop will exit as cipher_text[i] = 0. */
       for(i = 0; cipher_text[i] != 0; i ++)
       {
+          /* The following switch case is used to decrypt the given message using the provided
+          substition key. There are 26 different cases plus the default case if a character other
+          than a capital letter is encounted. The expression for the following switch case is 
+          'cipher_text[i]' whose constant will change each time the for loop is implemented since i increases by 1
+          each time. Each time i is incremented, a new variable of the array is selected for decryption. 
+          If the character selected using the array index is a capital letter, one of the cases will be 
+          chosen. The case chosen corresponds to the ASCII character of the variable selected from the array. 
+          
+          For example, if the variable is the letter A, then the first case will be chosen. This case assigns
+          the letter 'A' the first character of the array 'decryptSubKey' and then returns it to the main()
+          function.This is repeated until the whole array 'cipher_text' has been decrypted via substitution.
+          IF the 'cipher_text' array contains any lower case letters, numbers, symbols or white spaces, then the
+          default case will be inplemented in which the character is simply returned to the main() function
+          without being decrypted to another ASCII character. */
           switch(cipher_text[i])
           {
             case 'A':
                 cipher_text[i] = decryptSubKey[0];
-                break;
+                break; //break statements must be used at the end of every case otherwise the switch case will implement every case. 
             case 'B':
-                cipher_text[i] = decryptSubKey[1];
+                message[i] = encryptSubKey[1];
                 break;
             case 'C':
-                cipher_text[i] = decryptSubKey[2];
+                message[i] = encryptSubKey[2];
                 break;
             case 'D':
-                cipher_text[i] = decryptSubKey[3];
+                message[i] = encryptSubKey[3];
                 break;
             case 'E':
-                cipher_text[i] = decryptSubKey[4];
+                message[i] = encryptSubKey[4];
                 break;
             case 'F':
-                cipher_text[i] = decryptSubKey[5];
+                message[i] = encryptSubKey[5];
                 break;
             case 'G':
-                cipher_text[i] = decryptSubKey[6];
+                message[i] = encryptSubKey[6];
                 break;
             case 'H':
-                cipher_text[i] = decryptSubKey[7];
+                message[i] = encryptSubKey[7];
                 break;
             case 'I':
-                cipher_text[i] = decryptSubKey[8];
+                message[i] = encryptSubKey[8];
                 break;
             case 'J':
-                cipher_text[i] = decryptSubKey[9];
+                message[i] = encryptSubKey[9];
                 break;
-            case 'K': 
-                cipher_text[i] = decryptSubKey[10];
+            case 'K':
+                message[i] = encryptSubKey[10];
                 break;
             case 'L':
-                cipher_text[i] = decryptSubKey[11];
+                message[i] = encryptSubKey[11];
                 break;
             case 'M':
-                cipher_text[i] = decryptSubKey[12];
+                message[i] = encryptSubKey[12];
                 break;
             case 'N':
-                cipher_text[i] = decryptSubKey[13];
+                message[i] = encryptSubKey[13];
                 break;
             case 'O':
-                cipher_text[i] = decryptSubKey[14];
+                message[i] = encryptSubKey[14];
                 break;
             case 'P':
-                cipher_text[i] = decryptSubKey[15];
+                message[i] = encryptSubKey[15];
                 break;
             case 'Q':
-                cipher_text[i] = decryptSubKey[16];
+                message[i] = encryptSubKey[16];
                 break;
             case 'R':
-                cipher_text[i] = decryptSubKey[17];
+                message[i] = encryptSubKey[17];
                 break;
             case 'S':
-                cipher_text[i] = decryptSubKey[18];
+                message[i] = encryptSubKey[18];
                 break;
             case 'T':
-                cipher_text[i] = decryptSubKey[19];
+                message[i] = encryptSubKey[19];
                 break;
             case 'U':
-                cipher_text[i] = decryptSubKey[20];
+                message[i] = encryptSubKey[20];
                 break;
             case 'V':
-                cipher_text[i] = decryptSubKey[21];
+                message[i] = encryptSubKey[21];
                 break;
             case 'W':
-                cipher_text[i] = decryptSubKey[22];
+                message[i] = encryptSubKey[22];
                 break;
             case 'X':
-                cipher_text[i] = decryptSubKey[23];
+                message[i] = encryptSubKey[23];
                 break;
             case 'Y':
-                cipher_text[i] = decryptSubKey[24];
+                message[i] = encryptSubKey[24];
                 break;
             case 'Z':
-                cipher_text[i] = decryptSubKey[25];
-                break;
+                message[i] = encryptSubKey[25];
             default:
                 break;
           }
       }
-      return cipher_text[i];
+      /*The following statement takes each variable of the array 'cipher_text' that was assigned a new ASCII character
+      and returns it the main() function. Go to row 218.*/
+      return message[i];
   }
+  
   
