@@ -32,7 +32,7 @@ For this program to work, the messages inputted MUST use capital letters ONLY!
     Each function will be explained in further detail when it 
     appears as a function definition later in the code. */
 char encrypt_rotation(char *message, int i, int encryptRotKey);
-char decryptRotation(char *cipher_text, int i, int decryptRotKey);
+char decrypt_rotation(char *cipher_text, int i, int decryptRotKey);
 char encryptSubstitution(char *message, int i, char *encryptSubKey);
 char decryptSubstitution(char *cipher_text, int i, char *decryptSubKey);
 
@@ -109,8 +109,8 @@ int main()
                     /*The following text in green will be printed to the terminal */
                     printf("create a key between 1 and 26: ");
                     /*Using the following scanf function, the number for the key that the user inputs into 
-                    the terminal will be stored as a integer in the variable 'encryptRotKey'. The & symbol
-                    returns the address of the variable */
+                    the terminal will be stored as a integer in the variable 'encryptRotKey'. The format specifier 
+                    for an integer is 'd'. The & symbol returns the address of the variable */
                     scanf("%d", &encryptRotKey); 
                     /*The following text in green will be printed to the terminal*/
                     printf("create a message to encrypt: ");
@@ -146,15 +146,27 @@ int main()
                     except it will be used to decrypt a cipher text (a message that has 
                     previously been encrypted using rotation). Hence, it is named 'decryptRotKey*/
                     int decryptRotKey; 
-                    /* */
+                    /*The variable below is an array and represents the message the user will choose
+                    to be decrypted via rotation. The array has a length of 1000 characters.*/
                     char cipher_text[1000];
                     
+                    
                     printf("create a key between 1 and 26: ");
-                    scanf("%d", &decryptRotKey);
+                    /* the scanf function below reads the user's input and stores it as the decryption key
+                    variable with data type int ie stores it as an integer. */
+                    scanf("%d", &decryptRotKey); 
                     printf("Enter text to decrypt: ");
+                    /* Same principles apply for the following scanf function as did with the corresponding scanf
+                    for case 'a'. However, it is stored as the array 'cipher_text', not the array called 'message' */
                     scanf(" %[^\n]s", cipher_text);
                     
-                    decryptRotation(cipher_text, i, decryptRotKey);
+                    /* Go to row 273 before reading rest of the code in case 'b' as the block of code that starts there
+                    under the decryptRotation function definition is executed FIRST. */
+                    
+                    /*The following two lines of code are executed as follows:
+                        - The message that was decrypted using the decrypt_rotation function is passed back
+                        - The decrypted message is printed to the user interface*/
+                    decrypt_rotation(cipher_text, i, decryptRotKey);
                     printf("decrypted message using rotation is: %s\n", cipher_text);
                     
                     break;
@@ -162,13 +174,14 @@ int main()
             case 'c':
                 {
                     int i = 0; // same as case 'a'
+                    /* */
                     char encryptSubKey[26];
-                    char message[500];
+                    char message[1000]; //same as case 'a'
                     
                     printf("Enter a key for substitution encryption: ");
                     scanf("%s", encryptSubKey);
                     printf("Enter a message to encrypt using substitution: "); //PLEASE GET MILK AT THE SHOPS
-                    scanf(" %[^\n]s", message);
+                    scanf(" %[^\n]s", message); // same as case 'a'
                     
                     encryptSubstitution(message, i, encryptSubKey);
                     printf("encrypted message is: %s\n", message);
@@ -179,12 +192,12 @@ int main()
                 {
                     int i = 0; // same as case 'a'
                     char decryptSubKey[26]; //KXVMCNOPHQRSZYIJADLEGWBUFT for "QWERTY" key
-                    char cipher_text[500]; //HSTQLT UTZ DOSA QZ ZIT LIGHL
+                    char cipher_text[1000]; //same as case 'b'
                     
                     printf("Enter the key for substitution decryption: ");
                     scanf("%s", decryptSubKey);
                     printf("Enter text to decrypt using substitution: ");
-                    scanf(" %[^\n]s", cipher_text);
+                    scanf(" %[^\n]s", cipher_text); //same as case 'b'
                             
                     decryptSubstitution(cipher_text, i, decryptSubKey);
                     printf("decrypted message is: %s\n", cipher_text);
@@ -263,7 +276,7 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
   } 
   
   //REPEAT FIRST FUNCTION EXPLAINATION
-  char decryptRotation(char *cipher_text, int i, int decryptRotKey)
+  char decrypt_rotation(char *cipher_text, int i, int decryptRotKey)
   {
       for(i = 0; cipher_text[i] != 0; i ++)
       {
