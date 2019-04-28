@@ -160,7 +160,7 @@ int main()
                     for case 'a'. However, it is stored as the array 'cipher_text', not the array called 'message' */
                     scanf(" %[^\n]s", cipher_text);
                     
-                    /* Go to row 273 before reading rest of the code in case 'b' as the block of code that starts there
+                    /* Go to row AHAHAHAHAHHAHA before reading the rest of the code in case 'b' as the block of code that starts there
                     under the decryptRotation function definition is executed FIRST. */
                     
                     /*The following two lines of code are executed as follows:
@@ -174,15 +174,24 @@ int main()
             case 'c':
                 {
                     int i = 0; // same as case 'a'
-                    /* */
+                    /*The variable initialised below is an array of data type char. It represents the substitution
+                    implemented by the user in order to encrypt a chosen message. Since substitution encryption 
+                    involves each letter to be changed to another in no particular order, the key must be an array
+                    of 26 characters in length, with each letter only appearing once in the key. */
                     char encryptSubKey[26];
                     char message[1000]; //same as case 'a'
                     
                     printf("Enter a key for substitution encryption: ");
+                    /*The key for substitution ciphers is a string of characters (also known as an array) and therefore
+                    has the format specifier 's'. Since they key should contain no whitespaces, the '[^\n]' is not required. */
                     scanf("%s", encryptSubKey);
                     printf("Enter a message to encrypt using substitution: "); //PLEASE GET MILK AT THE SHOPS
                     scanf(" %[^\n]s", message); // same as case 'a'
                     
+                    /*Go to row AHAHAHAHAHA before reading the rest of the code in this case as it is executed AFTER the block of code
+                    following the encryptSubstitution function definition*/
+                    
+                    /*The following two lines of code are executed in the same way as seen in case 'a' */
                     encryptSubstitution(message, i, encryptSubKey);
                     printf("encrypted message is: %s\n", message);
                     
@@ -191,14 +200,19 @@ int main()
             case 'd':
                 {
                     int i = 0; // same as case 'a'
-                    char decryptSubKey[26]; //KXVMCNOPHQRSZYIJADLEGWBUFT for "QWERTY" key
+                    /* same as case 'c' except the key is reordered for decryption. For example, if the key used for 
+                    substitution encryption was 'QWERTYUIOPASDFGHJKLZXCVBNM', then this key would be re-ordered to be
+                    'KXVMCNOPHQRSZYIJADLEGWBUFT for decryption of the previously encrypted message. */
+                    char decryptSubKey[26]; 
                     char cipher_text[1000]; //same as case 'b'
                     
                     printf("Enter the key for substitution decryption: ");
-                    scanf("%s", decryptSubKey);
+                    scanf("%s", decryptSubKey); // same as case 'c', except key now for decryption
                     printf("Enter text to decrypt using substitution: ");
-                    scanf(" %[^\n]s", cipher_text); //same as case 'b'
+                    scanf(" %[^\n]s", cipher_text); //same principles as case 'b'
                             
+                    /*Go to row */
+                    
                     decryptSubstitution(cipher_text, i, decryptSubKey);
                     printf("decrypted message is: %s\n", cipher_text);
                                                                         
