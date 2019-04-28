@@ -1,12 +1,32 @@
-/*THIS COMMENT NEEDS TO DESCRIBE THE HIGH-LEVEL OPERATION OF THE PROGRAM + 
-cINCLUDE USER-INTERFACE NOTES IE HOW USER PICKS BETWEEN ACTIONS. 
-INCLUDE NEED TO USE TERMINAL. IE TYPE CD /PROJECTS/PROJECT1/ ENTER
-LS ENTER ./A.OUT ENTER THEN FOLLOW COMMANDS PRINTED TO TERMINAL */
+/*The following code allows the user encrypt and decrypt selected messages using
+both rotation (also known as Ceaser Cipher) and substitution cipher algorithms. 
+Specifically, each message will be stored as a string of ASCII characters. 
+ASCII assigns a number to letters, numbers and other characters so that a 
+computer is able to read the user's input. 
+
+The high-level operation of this program is Cryptography. This is the practice of 
+techniques for secure communication in order to prevent anyone reading secret 
+messages who do not otherwise have permission to. Applications of cytrography 
+includes;
+    - chip based payment cards
+    - digital currencies
+    - computer passwords
+    - military communications
+    
+For the user to use this program, they must use the 'terminal' not 'run' as 
+simply pressing run on this program in eclipse che does not allow the user to 
+input any data. To work the program in the terminal the user must;
+    1. Go into the terminal tab at the bottom of the screen
+    2. Type into the user interface 'cd /projects/project1/' then press enter
+    3. Type in 'ls' then press enter.
+    4. Type in './a.out' then press enter.
+    5. Follow the prompts that will be printed to the screen. To implement what
+    the user has typed into the user face, they must press enter each time. 
 
 #include <stdio.h>
 
 /* Below are 4 functions prototypes that were made to executed the programs function to 
-decrypt and encrypt messages. The function syntax is:
+   decrypt and encrypt messages. The function syntax is:
         [return data type] function_name(function arguments) 
     Each function will be explained in further detail when it 
     appears as a function definition later in the code. */
