@@ -273,7 +273,7 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
            less than 91. Therefore only encrypting capital letters.
            
            The following equation takes the given variable of the array and assigns it a new ASCII character.
-           Specifically, it does this by first sets the letter to an ASCII character between 0 and 25 by minusing
+           Specifically, it does this by first setting the letter to an ASCII character between 0 and 25 by minusing
            65. The chosen key for rotation is added. Then the modulus of 26 is taken to prevent characters being 
            encrypted into ASCII characters that are not capital letters. To then re-assign the character to an ASCII 
            capital letter, 65 is added. 
@@ -302,12 +302,12 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
     will be changed to what letter. ie if the key = 2, then C becomes A, D becomes B etc.
     
     The return data type for this function is char and its name is 'decrypt_rotation'. 
-    The first argument for this function is 'message' and it has the data type char. However,
-    since 'message' is an array, it is not efficient to pass a whole array in a function and therefore, 
+    The first argument for this function is 'cipher_text' and it has the data type char. However,
+    since 'cipher_text' is an array, it is not efficient to pass a whole array in a function and therefore, 
     a pointer is used. A pointer is the memory address of the array's first element and has the syntax '*'. 
     The remaining arguments of this function are not arrays and therefore do not require pointers in 
-    order to pass variables the function. These two arguments are explained under case 'a' of the above
-    switch case. */
+    order to pass the variables read in the main() to the function definition below. These two arguments 
+    are explained under case 'a' of the above switch case. */
   
   char decrypt_rotation(char *cipher_text, int i, int decryptRotKey)
   {
@@ -315,14 +315,14 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
       The function's arguments are passed from the main() function and are used below.
     
       The for loop used, initialises the array index to start at 0. It then states that
-      that the array named 'message' cannot have a character that is equal to zero. This is 
+      that the array named 'cipher_text' cannot have a character that is equal to zero. This is 
       the loop's condition. (the ASCII character who has the corresponding number of 0, is NULL).
       It then specifies that each time the for loop is executed, the index is incremented by 1
       ie the first time the loop is executed, i=1, the second time, i=2 etc, until there index 
       reaches the end of the array. At this point the for loop will exit as message[i] = 0.
     
-      The if loop is used to execute the rotation encryption tasks of this specific function. 
-      The only characters that will be encrypted via rotation will be capital letters. Lower case
+      The if loop is used to execute the rotation decryption tasks of this specific function. 
+      The only characters that will be decrypted via rotation will be capital letters. Lower case
       letters, symbols and spaces will simply be reprinted to the terminal by the else statement of 
       the if loop. */
       for(i = 0; cipher_text[i] != 0; i ++)
@@ -330,14 +330,14 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
           if (cipher_text[i] > 64 && cipher_text[i] < 91)
           {
            /*The conditions for this if statement to be executed is that the specific variable of the
-           array named 'message' must have a corresponding ASCII number that is greater than 64 but also 
-           less than 91. Therefore only encrypting capital letters.
+           array named 'cipher_text' must have a corresponding ASCII number that is greater than 64 but also 
+           less than 91. Therefore only decrypting capital letters.
            
-           The following equation takes the given variable of the array and assigns it a new ASCII character.
-           Specifically, it does this by first sets the letter to an ASCII character between 0 and 25 by minusing
-           65. The chosen key for rotation is added. Then the modulus of 26 is taken to prevent characters being 
-           encrypted into ASCII characters that are not capital letters. To then re-assign the character to an ASCII 
-           capital letter, 65 is added. 
+           The following equation takes the given variable of the array and assigns it the ASCII character it had before
+           it was originally encrypted via rotation. Specifically, it does this by first setting the letter to an ASCII 
+           character between 0 and 25 by minusing 65. The chosen key for rotation is subtracted. Then the modulus of 26 is 
+           taken to prevent characters being encrypted into ASCII characters that are not capital letters. To then 
+           re-assign the character to an ASCII capital letter, 65 is added. 
            */
                 cipher_text[i] = ((cipher_text[i] - 65) - decryptRotKey + 26) %26 + 65;
           }
@@ -346,20 +346,56 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
               
           }
       }
-      /*The following statement takes each variable of the array 'message' that was assigned a new ASCII character
-        and returns it the main() function. Go to row 29.*/
+      /*The following statement takes each variable of the array 'cipher_text' that was assigned a new ASCII character
+        and returns it the main() function. Go to row AHAHAHAH.*/
       return cipher_text[i];  
   }
 
+
+  /*This is the function defintion for the function (when called using the switch case menu) that will take the user's 
+  message and selected key (an array of the 26 letters of the alphabet) to encrypt the message using the substitution 
+  cipher. They key, named 'encryptSubKey' is a string of the alphabet that has purposely been written out of order. For
+  example, if the key used was 'QWERTYUIOPASDFGHJKLZXCVBNM' then using this function A will become Q, B will become W etc.
+  
+  The return data type for this function is char as it is returning a series of characters back to the main() function
+  and this can only be performed using the char data type. Both the 1st and 3rd arguments for this function are arrays and 
+  therefore requiring the use of pointers (whose syntax is '*') since it is not efficient to pass a whole array to a function. 
+  A pointer is the memory address of the array's first element. The 'int i' argument does not require a pointer to pass its 
+  information to the function as it is not a array and only holds one number at a time. The arguments are explained in more 
+  detail throughout the individual cases in the switch case. */
   char encryptSubstitution(char *message, int i, char *encryptSubKey)
   {
+     /*The above function is implemented using a for loop and switch case inside the for loop.
+     The function's arguments are passed from the main() function and are used below.
+    
+     The for loop used, initialises the array index to start at 0. It then states that
+     that the array named 'message' cannot have a character that is equal to zero. This is 
+     the loop's condition. (the ASCII character who has the corresponding number of 0, is NULL).
+     It then specifies that each time the for loop is executed, the index is incremented by 1
+     ie the first time the loop is executed, i=1, the second time, i=2 etc, until there index 
+     reaches the end of the array. At this point the for loop will exit as message[i] = 0. */
+    
       for (i = 0; message[i] != 0; i ++)
       {
+          /* The following switch case is used to encrypt the given message using the provided
+          substition key. There are 26 different cases plus the default case if a character other
+          than a capital letter is encounted. The expression for the following switch case is 
+          'message[i]' which will change each time the for loop is implemented since i increases by 1
+          each time. Each time i is incremented, a new variable of the array is selected for encryption. 
+          If the character selected using the array index is a capital letter, one of the cases will be 
+          chosen. The case chosen corresponds to the ASCII character of the variable selected from the array. 
+          
+          For example, if the variable is the letter A, then the first case will be chosen. This case assigns
+          the letter 'A' the first character of the array 'encryptSubKey' and then returns it to the main()
+          function.This is repeated until the whole array 'message' has been encrypted via substitution.
+          IF the 'message' array contains any lower case letters, numbers, symbols or white spaces, then the
+          default case will be inplemented in which the character is simply returned to the main() function
+          without being encrypted to another ASCII character. */
           switch(message[i])
           {
             case 'A':
                 message[i] = encryptSubKey[0];
-                break;
+                break; //break statements must be used at the end of every case otherwise the switch case will implement every case. 
             case 'B':
                 message[i] = encryptSubKey[1];
                 break;
