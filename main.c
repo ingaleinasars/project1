@@ -519,7 +519,7 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
           function.This is repeated until the whole array 'cipher_text' has been decrypted via substitution.
           IF the 'cipher_text' array contains any lower case letters, numbers, symbols or white spaces, then the
           default case will be inplemented in which the character is simply returned to the main() function
-          without being decrypted to another ASCII character. */
+          without being decrypted to another ASCII character.*/
           switch(cipher_text[i])
           {
             case 'A':
