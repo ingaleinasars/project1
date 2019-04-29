@@ -488,7 +488,7 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
   /*This is the function defintion for the function (when called using the switch case menu) that will take the user's 
   encrypted message (initialised as cipher_text for this function) and selected key (an array of the 26 letters of the alphabet)
   to decrypt a previously encrypted message using the substitution cipher. The key, named 'decryptSubKey' is a string of the alphabet 
-  that has purposely been written out of order. For example, if the key selected for decryption was 'KXVMCHNOPHQRSZYIJADLEGWBUFT' then 
+  that has purposely been written out of order. For example, if the key selected for decryption was 'KXVMCNOPHQRSZYIJADLEGWBUFT' then 
   using this in the function, A will be decrypted to K, B will be decrypted to X etc.
   
   The return data type for this function is char as it is returning a series of characters back to the main() function
@@ -530,86 +530,86 @@ char encrypt_rotation(char *message, int i, int encryptRotKey)
                 cipher_text[i] = decryptSubKey[0];
                 break; //break statements must be used at the end of every case otherwise the switch case will implement every case. 
             case 'B':
-                message[i] = encryptSubKey[1];
+                cipher_text[i] = decryptSubKey[1];
                 break;
             case 'C':
-                message[i] = encryptSubKey[2];
+                cipher_text[i] = decryptSubKey[2];
                 break;
             case 'D':
-                message[i] = encryptSubKey[3];
+                cipher_text[i] = decryptSubKey[3];
                 break;
             case 'E':
-                message[i] = encryptSubKey[4];
+                cipher_text[i] = decryptSubKey[4];
                 break;
             case 'F':
-                message[i] = encryptSubKey[5];
+                cipher_text[i] = decryptSubKey[5];
                 break;
             case 'G':
-                message[i] = encryptSubKey[6];
+                cipher_text[i] = decryptSubKey[6];
                 break;
             case 'H':
-                message[i] = encryptSubKey[7];
+                cipher_text[i] = decryptSubKey[7];
                 break;
             case 'I':
-                message[i] = encryptSubKey[8];
+                cipher_text[i] = decryptSubKey[8];
                 break;
             case 'J':
-                message[i] = encryptSubKey[9];
+                cipher_text[i] = decryptSubKey[9];
                 break;
             case 'K':
-                message[i] = encryptSubKey[10];
+                cipher_text[i] = decryptSubKey[10];
                 break;
             case 'L':
-                message[i] = encryptSubKey[11];
+                cipher_text[i] = decryptSubKey[11];
                 break;
             case 'M':
-                message[i] = encryptSubKey[12];
+                cipher_text[i] = decryptSubKey[12];
                 break;
             case 'N':
-                message[i] = encryptSubKey[13];
+                cipher_text[i] = dencryptSubKey[13];
                 break;
             case 'O':
-                message[i] = encryptSubKey[14];
+                cipher_text[i] = decryptSubKey[14];
                 break;
             case 'P':
-                message[i] = encryptSubKey[15];
+                cipher_text[i] = decryptSubKey[15];
                 break;
             case 'Q':
-                message[i] = encryptSubKey[16];
+                cipher_text[i] = decryptSubKey[16];
                 break;
             case 'R':
-                message[i] = encryptSubKey[17];
+                cipher_text[i] = decryptSubKey[17];
                 break;
             case 'S':
-                message[i] = encryptSubKey[18];
+                cipher_text[i] = decryptSubKey[18];
                 break;
             case 'T':
-                message[i] = encryptSubKey[19];
+                cipher_text[i] = decryptSubKey[19];
                 break;
             case 'U':
-                message[i] = encryptSubKey[20];
+                cipher_text[i] = decryptSubKey[20];
                 break;
             case 'V':
-                message[i] = encryptSubKey[21];
+                cipher_text[i] = decryptSubKey[21];
                 break;
             case 'W':
-                message[i] = encryptSubKey[22];
+                cipher_text[i] = decryptSubKey[22];
                 break;
             case 'X':
-                message[i] = encryptSubKey[23];
+                cipher_text[i] = decryptSubKey[23];
                 break;
             case 'Y':
-                message[i] = encryptSubKey[24];
+                cipher_text[i] = decryptSubKey[24];
                 break;
             case 'Z':
-                message[i] = encryptSubKey[25];
+                cipher_text[i] = decryptSubKey[25];
             default:
                 break;
           }
       }
       /*The following statement takes each variable of the array 'cipher_text' that was assigned a new ASCII character
       and returns it the main() function. Go to row 221.*/
-      return message[i];
+      return cipher_text[i];
   }
   
   
